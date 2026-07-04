@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-base text-text font-body antialiased transition-colors duration-200;
+  }
+  html.dark body {
+    @apply bg-base-dark text-text-dark;
+  }
+  ::selection {
+    @apply bg-signal/20;
+  }
+  :focus-visible {
+    outline: 2px solid #2947e5;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-4xl px-5 sm:px-8;
+  }
+
+  .section-tag {
+    @apply font-mono text-[11px] tracking-[0.14em] uppercase text-signal dark:text-signal-dark;
+  }
+
+  .field-label {
+    @apply block font-body text-sm font-medium text-ink dark:text-text-dark mb-1.5;
+  }
+
+  .field-hint {
+    @apply text-xs text-text-soft dark:text-text-dark-soft mt-1.5;
+  }
+
+  .input-base {
+    @apply w-full rounded-lg border border-line dark:border-linedark bg-surface dark:bg-surface-dark
+      px-3.5 py-2.5 text-sm text-ink dark:text-text-dark placeholder:text-text-soft/70
+      transition-colors duration-150 focus:border-signal focus:ring-1 focus:ring-signal
+      dark:focus:border-signal-dark dark:focus:ring-signal-dark outline-none;
+  }
+
+  .input-error {
+    @apply border-alert focus:border-alert focus:ring-alert;
+  }
+
+  .card-surface {
+    @apply bg-surface dark:bg-surface-dark border border-line dark:border-linedark rounded-2xl shadow-card;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-signal px-5 py-2.5 text-sm font-semibold
+      text-white shadow-sm transition-all duration-150 hover:bg-signal/90 active:scale-[0.98]
+      disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-line dark:border-linedark
+      bg-transparent px-5 py-2.5 text-sm font-semibold text-ink dark:text-text-dark transition-all
+      duration-150 hover:bg-ink/5 dark:hover:bg-white/5 active:scale-[0.98] disabled:opacity-50
+      disabled:pointer-events-none;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium
+      text-text-soft dark:text-text-dark-soft transition-colors hover:text-ink dark:hover:text-text-dark
+      hover:bg-ink/5 dark:hover:bg-white/5;
+  }
+
+  .chip {
+    @apply cursor-pointer select-none rounded-full border border-line dark:border-linedark px-3.5 py-1.5
+      text-sm text-ink dark:text-text-dark transition-all duration-150 hover:border-signal/50;
+  }
+
+  .chip-active {
+    @apply border-signal bg-signal-soft text-signal dark:bg-signal/15 dark:text-signal-dark dark:border-signal-dark;
+  }
+}
+
+@media print {
+  body {
+    background: white !important;
+  }
+}
